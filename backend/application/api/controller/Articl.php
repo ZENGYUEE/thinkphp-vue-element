@@ -27,7 +27,7 @@ class Articl extends Base
         }
 
         $info = $db -> page($page) -> limit($pageSize) -> where($where) -> order('id desc') -> select();
-        $total = $db -> count('id');
+        $total = $db -> where($where) -> count();
         return json(['code'=> 1, 'data' => $info, 'total' => $total]);
     }
 
